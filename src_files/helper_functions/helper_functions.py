@@ -122,7 +122,7 @@ class CocoDetection(datasets.coco.CocoDetection):
                 output[2][self.cat2cat[obj['category_id']]] = 1
         target = output
         path = coco.loadImgs(img_id)[0]['file_name']
-        img = Image.open(os.path.join(self.root, path)).convert('RGB')
+        img = os.path.join(self.root, path)
         if self.transform is not None:
             img = self.transform(img)
 
