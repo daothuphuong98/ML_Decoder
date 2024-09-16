@@ -85,7 +85,7 @@ def main():
     train_multi_label_coco(model, train_loader, val_loader, args.lr)
 
 
-def train_multi_label_coco(model, train_loader, val_loader, lr):
+def train_multi_label_coco(model, train_loader, val_loader, lr, args):
     ema = ModelEma(args, 0.9997)
 
     # set optimizer
