@@ -85,8 +85,11 @@ def main():
     train_multi_label_coco(model, train_loader, val_loader, args.lr)
 
 
-def train_multi_label_coco(model, train_loader, val_loader, lr):
-    ema = ModelEma(model, 0.9997)  # 0.9997^641=0.82
+def train_multi_label_coco(model, train_loader, val_loader, lr, model_path=None):
+    if model_path is not None:
+        ema = ModelEma(model_path, 0.9997)
+    else:
+        ema = ModelEma(model, 0.9997)  # 0.9997^641=0.82
 
     # set optimizer
     Epochs = 40
