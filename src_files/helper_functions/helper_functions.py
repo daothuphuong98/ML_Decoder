@@ -14,7 +14,7 @@ import json
 import torch.utils.data as data
 from sklearn.preprocessing import MultiLabelBinarizer
 import pandas as pd
-
+from src_files.models import create_model
 
 
 def parse_args(parser):
@@ -132,10 +132,10 @@ class CocoDetection(datasets.coco.CocoDetection):
 
 
 class ModelEma(torch.nn.Module):
-    def __init__(self, model, decay=0.9997, device=None):
+    def __init__(self, model_path, decay=0.9997, device=None):
         super(ModelEma, self).__init__()
         # make a copy of the model for accumulating moving average of weights
-        self.module = deepcopy(model)
+        self.module = create_model(model_path)
         self.module.eval()
         self.decay = decay
         self.device = device  # perform ema on different device from model if set
