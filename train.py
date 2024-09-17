@@ -130,11 +130,9 @@ def train_multi_label_coco(model, train_loader, val_loader, args):
                               scheduler.get_last_lr()[0], \
                               loss.item()))
 
-        try:
-            torch.save(model.state_dict(), os.path.join(
-                'models/', 'model-{}-{}.ckpt'.format(epoch + 1, i + 1)))
-        except:
-            pass
+    
+        torch.save(model.state_dict(), os.path.join(
+            'models/', 'model-{}-{}.ckpt'.format(epoch + 1, i + 1)))
 
         model.eval()
 
