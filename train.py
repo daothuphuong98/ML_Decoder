@@ -142,11 +142,8 @@ def train_multi_label_coco(model, train_loader, val_loader, args):
         model.train()
         if mAP_score > highest_mAP:
             highest_mAP = mAP_score
-            try:
-                torch.save(model.state_dict(), os.path.join(
-                    'models/', 'model-highest.ckpt'))
-            except:
-                pass
+            torch.save(model.state_dict(), os.path.join(
+                'models/', 'model-highest.ckpt'))
         print('current_mAP = {:.2f}, highest_mAP = {:.2f}\n'.format(mAP_score, highest_mAP))
 
 
