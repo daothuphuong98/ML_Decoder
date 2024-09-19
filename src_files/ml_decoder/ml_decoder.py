@@ -47,6 +47,7 @@ class TransformerDecoderLayerOptimal(nn.Module):
         self.norm3 = nn.LayerNorm(d_model, eps=layer_norm_eps)
 
         self.activation = _get_activation_fn(activation)
+        print(dir(self))
 
     def __setstate__(self, state):
         if 'activation' not in state:
