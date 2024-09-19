@@ -14,7 +14,7 @@ import json
 import torch.utils.data as data
 from sklearn.preprocessing import MultiLabelBinarizer
 import pandas as pd
-from src_files.models import create_model
+from src_files.models import create_model, create_model2
 
 
 def parse_args(parser):
