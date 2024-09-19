@@ -44,7 +44,7 @@ def main():
     print('creating model {}...'.format(args.model_name))
     model = create_model(args, load_head=True).cuda()
     state = torch.load(args.model_path, map_location='cpu')
-    model.load_state_dict(state['model'], strict=True)
+    # model.load_state_dict(state['model'], strict=True)
     ########### eliminate BN for faster inference ###########
     model = model.cpu()
     model = InplacABN_to_ABN(model)
@@ -54,7 +54,7 @@ def main():
     print('done')
 
 
-    classes_list = np.array(list(state['idx_to_class'].values()))
+    classes_list = np.arange(0,12) #np.array(list(state['idx_to_class'].values()))
     print('done\n')
 
     # doing inference
